@@ -44,6 +44,10 @@ public class EventController {
     @PostMapping
     public ResponseEntity<ApiResponse<Event>> saveEvent(@Valid @RequestBody EventRequest request){
         Event event=eventService.saveEvent(request);
+        if (request.getVenueId()==null){
+            throw new NotFoundException("Venue id "+request.getVenueId()+" Not Found");
+        }
+
 
         ApiResponse<Event> response=ApiResponse.<Event>builder()
                 .success(true)

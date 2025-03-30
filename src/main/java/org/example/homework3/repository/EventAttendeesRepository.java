@@ -28,4 +28,7 @@ public interface EventAttendeesRepository {
         VALUES (#{eventId}, #{attendeeId});
     """)
     void insertEventAndAttendeesId(Long eventId, Long attendeeId);
+
+    @Select("SELECT * FROM attendees WHERE attendee_id = #{attendeeId}")
+    Attendee getAttendeeById(Long attendeeId);
 }

@@ -19,15 +19,12 @@ public class EventRequest {
     @NotBlank
     private String eventName;
 
-    @NotNull
-    @NotBlank
+
     private Date eventDate;
 
-    @NotNull
-    @NotBlank
+
     private Long venueId;
 
-    @NotNull
-    @NotBlank
+
     private List<Long> attendeesId;
 }

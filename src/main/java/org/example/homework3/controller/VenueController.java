@@ -57,20 +57,18 @@ public class VenueController {
     }
 
     @GetMapping("/{venue-id}")
-    public ResponseEntity<?> getVenueById(@PathVariable("venue-id") Long venueId){
+    public ResponseEntity<?> getVenueById(@PathVariable("venue-id") Long venueId) {
+        // Directly call the service method without Optional
         Venue venue = venueService.getVenueById(venueId);
 
-            if (venue == null){
-                throw new NotFoundException("Venue id "+venueId+" Not Found");
-            }
-
-        ApiResponse<Venue> response=ApiResponse.<Venue>builder()
+        ApiResponse<Venue> response = ApiResponse.<Venue>builder()
                 .success(true)
-                .message("Get Venue "+venueId+" Successfully!")
+                .message("Get Venue " + venueId + " Successfully!")
                 .status(HttpStatus.OK)
                 .payload(venue)
                 .instant(Instant.now())
                 .build();
+
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
